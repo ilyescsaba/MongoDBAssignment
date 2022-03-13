@@ -1,0 +1,20 @@
+{
+  "firstName": "Joe",
+  "lastName": "Jackson",
+  "gender": "male",
+  "age": 28,
+  "address": {
+    "streetAddress": "101",
+    "state": "CA",
+    "city": "San Diego",
+    "TEST": {
+      "A": "A",
+      "B": "B",
+      "C": "C"
+    }
+  },
+  "phoneNumbers": {
+    "type": "home",
+    "number": "7349282382"
+  }
+}
