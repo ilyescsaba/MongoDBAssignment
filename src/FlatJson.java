@@ -2,8 +2,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -84,6 +84,8 @@ public class FlatJson {
 
         if (newKey != null && newKey.contains(".")) {
             newKey = newKey.substring(0, newKey.lastIndexOf("."));
+        } else {
+            newKey = null;
         }
         isLastIteration = false;
 
@@ -117,11 +119,18 @@ public class FlatJson {
             // print initial JSON file
             System.out.println("INITIAL FILE:");
             JSONObject jo = (JSONObject) obj;
-             printJsonObject(jo);
+            printJsonObject(jo);
+
+            flattenJson(jo);
+
+            System.out.println("PLEASE ENTER ABSOLUTE PATH FOR JSON FILE TO BE SAVED");
+            String FlatJSONPath = scan.nextLine();
+            FileWriter fileWriter = new FileWriter(FlatJSONPath);
+            fileWriter.write(flatJsonObject.toJSONString());
+            fileWriter.flush();
 
             // flatten and print JSON file
             System.out.println("FLATTENED VERSION OF FILE:");
-            flattenJson(jo);
             printJsonObject(flatJsonObject);
 
         } catch (IOException | ParseException e) {
